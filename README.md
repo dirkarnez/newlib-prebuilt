@@ -52,3 +52,8 @@ newlib-prebuilt
 > provide any hardware abstraction layer (HAL) or device drivers. You'll
 > need to develop or adapt any necessary device drivers to interact with
 > your hardware peripherals effectively.
+
+### Reference
+- https://github.com/bminor/newlib/blob/master/.github/workflows/cygwin.yml
+- https://hackaday.com/2021/07/19/the-newlib-embedded-c-standard-library-and-how-to-use-it/
+- https://www.cs.ccu.edu.tw/~pahsiung/courses/esd/resources/newlib.pdf
