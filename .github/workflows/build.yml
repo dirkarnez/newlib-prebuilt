@@ -44,13 +44,14 @@ jobs:
         shell: cmd
         run: |
           curl ${{ matrix.compiler.url }} -L --output compiler &&^
-          7z.exe x -y compiler
+          7z.exe x -y compiler &&^
+          ls
 
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
         run: |
             workspace=$(pwd) &&
-            export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
+            export PATH="$workspace/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-aarch64-none-elf:$workspace/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-aarch64-none-elf/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             cd ${{ env.libraryName }}-${{ env.tagName }} && 
             g++ --version && 
             ./configure --target aarch64-none-elf --disable-newlib-supplied-syscalls --prefix="$(pwd)/${{ env.installationPath }}" &&
