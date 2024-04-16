@@ -56,7 +56,7 @@ jobs:
             cd ${{ env.libraryName }}-${{ env.tagName }} && 
             aarch64-none-elf-gcc.exe --version && 
             export LDFLAGS="$LDFLAGS --specs=nosys.specs" &&
-            ( ./configure --target aarch64-none-elf --disable-newlib-supplied-syscalls --prefix="$(pwd)/${{ env.installationPath }}" && make ||  cat config.log ) &&
+            ( ./configure --target=aarch64-none-elf --disable-newlib-supplied-syscalls --prefix="$(pwd)/${{ env.installationPath }}" && make ||  cat config.log ) &&
             echo "done"
             
             
