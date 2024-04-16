@@ -43,7 +43,7 @@ jobs:
         shell: cmd
         run: |
           curl ${{ matrix.compiler.url }} -L --output compiler &&^
-          7z.exe x compiler
+          7z.exe x -y compiler
 
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
