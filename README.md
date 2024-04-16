@@ -1,5 +1,6 @@
 newlib-prebuilt
 ===============
+[sourceware.org Git - newlib-cygwin.git/summary](https://sourceware.org/git/gitweb.cgi?p=newlib-cygwin.git)
 ### ChatGPT
 > To provide the necessary system-dependent functions when using Newlib
 > in a bare-metal environment, you'll need to implement the required
@@ -54,6 +55,7 @@ newlib-prebuilt
 > your hardware peripherals effectively.
 
 ### Reference
+- [**Using Newlib in ARM bare metal programs | Jason note**](https://jasonblog.github.io/note/arm_emulation/using_newlib_in_arm_bare_metal_programs.html)
 - https://github.com/bminor/newlib/blob/master/.github/workflows/cygwin.yml
 - https://hackaday.com/2021/07/19/the-newlib-embedded-c-standard-library-and-how-to-use-it/
 - https://www.cs.ccu.edu.tw/~pahsiung/courses/esd/resources/newlib.pdf
