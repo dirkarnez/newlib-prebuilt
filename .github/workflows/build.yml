@@ -29,8 +29,9 @@ jobs:
     steps:
       - shell: cmd
         run: |
-          curl ftp://sourceware.org/pub/newlib/newlib-${{ env.tagName }}.tar.gz -L -J --output newlib.tar.gz &&^
-          tar xzf newlib.tar.gz
+          curl ftp://sourceware.org/pub/newlib/${{ env.libraryName }}-${{ env.tagName }}.tar.gz -L -J --output ${{ env.libraryName }}.tar.gz &&^
+          tar xzf ${{ env.libraryName }}.tar.gz &&^
+          ls
 
       - name: Install MSYS2
         uses: msys2/setup-msys2@v2
@@ -50,7 +51,7 @@ jobs:
         run: |
             workspace=$(pwd) &&
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
-            cd ${{ env.libraryName }} && 
+            cd ${{ env.libraryName }}-${{ env.tagName }} && 
             g++ --version && 
             ./configure --target aarch64-none-elf --disable-newlib-supplied-syscalls --prefix="$(pwd)/${{ env.installationPath }}" &&
             make
