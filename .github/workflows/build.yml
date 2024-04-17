@@ -59,17 +59,21 @@ jobs:
             ( ./configure CFLAGS="-specs=nosys.specs" --host=aarch64-none-elf --disable-newlib-supplied-syscalls --prefix="$(pwd)/${{ env.installationPath }}" && make ||  cat config.log ) &&
             echo "done"
             
-            
+      - shell: msys2 {0}
+        run: |
+          cd ${{ env.libraryName }}-${{ env.tagName }}/${{ env.installationPath }} &&
+          ls
+          
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: "${{ env.libraryName }}/${{ env.installationPath }}"
+          directory: "${{ env.libraryName }}-${{ env.tagName }}/${{ env.installationPath }}"
           filename: "${{ env.libraryName }}-${{ github.ref_name }}-${{ matrix.compiler.name }}.zip"
         
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "${{ env.libraryName }}/cmake-build/${{ env.cmakeInstallationPath }}/${{ env.libraryName }}-${{ github.ref_name }}-${{ matrix.compiler.name }}.zip"
+          artifacts: "${{ env.libraryName }}-${{ env.tagName }}/cmake-build/${{ env.cmakeInstallationPath }}/${{ env.libraryName }}-${{ github.ref_name }}-${{ matrix.compiler.name }}.zip"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
